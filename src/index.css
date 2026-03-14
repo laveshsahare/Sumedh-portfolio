@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Jack Armstrong';
+  src: url('/fonts/JackArmstrong.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Jack Armstrong', 'Comic Sans MS', cursive, sans-serif;
+  background-color: #FAF9F6;
+  color: #2D2D2D;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Canvas Grid ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(45, 45, 45, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 45, 45, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Paper Grain ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  mix-blend-mode: multiply;
+}
+
+.canvas-vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(210, 190, 165, 0.12) 100%);
+}
+
+.canvas-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(45, 45, 45, 0.06);
+}
+
+/* ── Floating Art Animations ── */
+@keyframes drift1 {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  25%  { transform: translate(30px, -40px) rotate(15deg); }
+  50%  { transform: translate(-20px, -80px) rotate(-10deg); }
+  75%  { transform: translate(40px, -40px) rotate(20deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+@keyframes drift2 {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  25%  { transform: translate(-40px, -30px) rotate(-20deg); }
+  50%  { transform: translate(20px, -70px) rotate(15deg); }
+  75%  { transform: translate(-30px, -50px) rotate(-15deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+@keyframes drift3 {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  33%  { transform: translate(50px, -50px) rotate(25deg); }
+  66%  { transform: translate(-30px, -90px) rotate(-20deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+@keyframes drift4 {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  20%  { transform: translate(-20px, -60px) rotate(-10deg); }
+  40%  { transform: translate(30px, -30px) rotate(20deg); }
+  60%  { transform: translate(-10px, -80px) rotate(-15deg); }
+  80%  { transform: translate(20px, -50px) rotate(10deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.float-drift-1 { animation: drift1 infinite ease-in-out; }
+.float-drift-2 { animation: drift2 infinite ease-in-out; }
+.float-drift-3 { animation: drift3 infinite ease-in-out; }
+.float-drift-4 { animation: drift4 infinite ease-in-out; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #FAF9F6; }
+::-webkit-scrollbar-thumb { background: #2D2D2D; border-radius: 4px; }
+::selection { background: #2D2D2D; color: #FAF9F6; }
