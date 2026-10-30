@@ -4,12 +4,14 @@
 
 @font-face {
   font-family: 'Jack Armstrong';
-  src: url('/fonts/JackArmstrong.ttf') format('truetype');
+  /* Add %20 for the space so browsers can find the file correctly */
+  src: url('/fonts/Jack%20Armstrong.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
+/* Fix the selector from '-' to '*' */
 * {
   margin: 0;
   padding: 0;
